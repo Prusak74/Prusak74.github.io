@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>kwestionariusz</title>
+</head>
+<body>
+<form>
+	<label for="fname">Imię</label><br>
+	<input type="text" id="fname" name="fname" required><br>
+	<label for="lname">Nazwisko</label><br>
+	<input type="text" id="lname" name="lname" required><br>
+	<label for="strt">Ulica</label><br>
+	<input type="text" id="strt" name="strt" required><br>
+	<label for="city">Miasto</label><br>
+	<input type="text" id="city" name="city" required><br>
+	<label for="county">Województwo </label>
+	<select id="county" name="county" required><br>
+		<option value="maz">mazowieckie</option>
+		<option value="lod">łódzkie</option>
+		<option value="swk">świętokrzyskie</option>
+		<option value="pod">podlaskie</option>
+		<option value="lub">lubelskie</option>
+	</select><br>
+	<label for="birthday">Data urodzenia</label><br>
+	<input type="date" id="birthday" name="birthday" required><br>
+	<label for="number">Nr Telefonu</label><br>
+	<input type="tel" id="number" name="number" required><br>
+	<label for="email">Email</label><br>
+	<input type="email" id="email" name="email" required><br>
+	<label for="pass">Hasło</label><br>
+	<input type="password" id="pass" name="pass" required><br>
+	<label for="car">Czy posiadasz prawo jazdy?</label><br>
+	<input type="radio" id="yes" name="car" value="yes"> <label for="yes">Tak</label>
+	<input type="radio" id="no" name="car" value="no" checked="checked"> <label for="no">Nie</label><br>
+	<label for="message">Uwagi</label>
+	<textarea name="message" rows="10" cols="30">
+	
+	</textarea><br>
+	<input type="submit" value="Ok" formaction="https://www.google.com/">
+</form>
+</body>
+</html>
