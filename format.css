@@ -1,17 +1,18 @@
 form {
 	font-size: 16px;
-	align: center;
+	text-align: center;
 }
 label {display: block; align: center;}
 input[type=text], input[type=password], input[type=email], input[type=tel], textarea, select {
   width: 60%;
   align: center;
   text-align: center;
-  padding: 12px;
-  margin: 8px 0;
+  padding: 4px;
+  margin: 4px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
+  float: center;
   box-sizing: border-box;
 }
 
@@ -28,4 +29,10 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+
+table, th, td {
+	padding: 10px;
+	border: 2px solid black;
+	border-collapse: collapse;
 }
