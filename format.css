@@ -1,5 +1,6 @@
 form {
 	font-size: 16px;
 	border: 2px black;
-	padding: 10px:
+	align: center;
 }
+label {display: block;}
