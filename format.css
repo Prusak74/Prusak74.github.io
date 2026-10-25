@@ -32,6 +32,7 @@ input[type=submit]:hover {
 }
 
 table, th, td {
+	table-layout: fixed;
 	padding: 10px;
 	border: 2px solid black;
 	border-collapse: collapse;
