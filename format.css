@@ -1,11 +1,11 @@
 form {
 	font-size: 16px;
-	border: 2px black;
 	align: center;
 }
-label {display: block;}
-input[type=text], select {
+label {display: block; align: center;}
+input[type=text], input[type=password], input[type=email], input[type=tel], select {
   width: 100%;
+  align: center;
   padding: 12px;
   margin: 8px 0;
   display: inline-block;
@@ -13,24 +13,7 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-input[type=password] {
-	width: 100%;
-  	padding: 12px;
-  	margin: 8px 0;
-  	display: inline-block;
-  	border: 1px solid #ccc;
-  	border-radius: 4px;
-  	box-sizing: border-box;
-}
-input[type=tel] {
-	width: 100%;
-  	padding: 12px;
-  	margin: 8px 0;
-  	display: inline-block;
-  	border: 1px solid #ccc;
-  	border-radius: 4px;
-  	box-sizing: border-box;
-}
+
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
