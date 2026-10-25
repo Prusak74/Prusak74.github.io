@@ -4,8 +4,25 @@ form {
 	align: center;
 }
 label {display: block;}
-input[type=text], input[type=password], input[type=tel] {
+input[type=text] {
 	width: 90%;
+	padding: 12px;
+  	margin: 8px 0;
+  	display: inline-block;
+	border: 2px black;
+}
+input[type=password] {
+	width: 90%;
+	padding: 12px;
+  	margin: 8px 0;
+  	display: inline-block;
+	border: 2px black;
+}
+input[type=tel] {
+	width: 90%;
+	padding: 12px;
+  	margin: 8px 0;
+  	display: inline-block;
 	border: 2px black;
 }
 input[type=submit] {
