@@ -9,21 +9,24 @@ input[type=text] {
 	padding: 12px;
   	margin: 8px 0;
   	display: inline-block;
-	border: 2px black;
+	border: none;
+	border-radius: 4px black;
 }
 input[type=password] {
 	width: 90%;
 	padding: 12px;
   	margin: 8px 0;
   	display: inline-block;
-	border: 2px black;
+	border: none;
+	border-radius: 4px black;
 }
 input[type=tel] {
 	width: 90%;
 	padding: 12px;
   	margin: 8px 0;
   	display: inline-block;
-	border: 2px black;
+	border: none;
+	border-radius: 4px black;
 }
 input[type=submit] {
   width: 100%;
