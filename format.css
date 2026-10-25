@@ -4,6 +4,10 @@ form {
 	align: center;
 }
 label {display: block;}
+input[type=text], input[type=password], input[type=tel] {
+	width: 90%;
+	border: 2px black;
+}
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
