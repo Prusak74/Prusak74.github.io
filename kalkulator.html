@@ -213,6 +213,13 @@
                     throw new Error("Nieprawidłowe znaki");
                 }
 
+				// Odcięcie ostatniego operatora
+				const operators = ["+", "-", "*", "/"];
+				if (operators.includes(expression[expression.length - 1])){
+					let temp = expression.slice(0, (expression.length -1));
+					expression = temp;
+				}
+
                 // Sprawdzenie poprawności składni
                 const result = eval(expression);
 
