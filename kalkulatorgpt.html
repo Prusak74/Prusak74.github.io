@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            width: 320px;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #display {
+            width: 100%;
+            height: 65px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #f1f5f9;
+            color: #0f172a;
+            font-size: 28px;
+            text-align: right;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #334155;
+            color: white;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #475569;
+            transform: scale(1.04);
+        }
+
+        .operator {
+            background: #2563eb;
+        }
+
+        .operator:hover {
+            background: #1d4ed8;
+        }
+
+        .clear {
+            background: #dc2626;
+        }
+
+        .clear:hover {
+            background: #b91c1c;
+        }
+
+        .equals {
+            background: #16a34a;
+        }
+
+        .equals:hover {
+            background: #15803d;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>Kalkulator</h2>
+
+        <input type="text" id="display" value="0" readonly>
+
+        <div class="buttons">
+
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="addValue('(')">(</button>
+            <button onclick="addValue(')')">)</button>
+            <button class="operator" onclick="addValue('/')">/</button>
+
+            <button onclick="addValue('7')">7</button>
+            <button onclick="addValue('8')">8</button>
+            <button onclick="addValue('9')">9</button>
+            <button class="operator" onclick="addValue('*')">*</button>
+
+            <button onclick="addValue('4')">4</button>
+            <button onclick="addValue('5')">5</button>
+            <button onclick="addValue('6')">6</button>
+            <button class="operator" onclick="addValue('-')">-</button>
+
+            <button onclick="addValue('1')">1</button>
+            <button onclick="addValue('2')">2</button>
+            <button onclick="addValue('3')">3</button>
+            <button class="operator" onclick="addValue('+')">+</button>
+
+            <button class="zero" onclick="addValue('0')">0</button>
+            <button onclick="addValue('.')">.</button>
+            <button class="equals" onclick="calculate()">=</button>
+
+        </div>
+    </div>
+
+    <script>
+
+        let expression = "";
+
+        const display = document.getElementById("display");
+
+        // Aktualizacja wyświetlacza
+        function updateDisplay() {
+            display.value = expression || "0";
+        }
+
+        // Czyszczenie kalkulatora
+        function clearDisplay() {
+            expression = "";
+            updateDisplay();
+        }
+
+        // Dodawanie znaków do działania
+        function addValue(value) {
+
+            const operators = ["+", "-", "*", "/"];
+
+            // Sprawdzenie dwóch operatorów obok siebie
+            if (operators.includes(value)) {
+
+                if (expression === "") {
+                    if (value !== "-") return;
+                }
+
+                const last = expression.slice(-1);
+
+                if (operators.includes(last)) {
+                    if (value === "-") {
+                        expression += value;
+                    } else {
+                        return;
+                    }
+                } else {
+                    expression += value;
+                }
+            }
+
+            // Obsługa kropki dziesiętnej
+            else if (value === ".") {
+
+                const parts = expression.split(/[+\-*/()]/);
+                const lastNumber = parts[parts.length - 1];
+
+                if (lastNumber.includes(".")) return;
+
+                if (lastNumber === "") {
+                    expression += "0.";
+                } else {
+                    expression += ".";
+                }
+            }
+
+            else {
+                expression += value;
+            }
+
+            updateDisplay();
+        }
+
+        // Obliczanie wyniku
+        function calculate() {
+
+            try {
+
+                if (expression === "") return;
+
+                // Sprawdzenie niedozwolonych znaków
+                if (!/^[0-9+\-*/.() ]+$/.test(expression)) {
+                    throw new Error("Nieprawidłowe znaki");
+                }
+
+                // Sprawdzenie poprawności składni
+                const result = eval(expression);
+
+                // Sprawdzenie wyniku
+                if (!Number.isFinite(result)) {
+                    throw new Error("Nie można wykonać działania");
+                }
+
+                expression = String(
+                    Number(result.toFixed(10))
+                );
+
+                updateDisplay();
+
+            } catch (error) {
+
+                display.value = "Błąd";
+                expression = "";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
