@@ -179,6 +179,11 @@
                 }
             }
 
+			// Ignorowanie wielu zer na początku działąnia
+			else if (value === "0") {
+				if (expression === ""){
+					return;}
+
             // Obsługa kropki dziesiętnej
             else if (value === ".") {
 
