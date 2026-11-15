@@ -5,8 +5,51 @@
 <link rel="stylesheet" href="https://prusak74.github.io/format.css">
 <title>kwestionariusz</title>
 </head>
+<script>
+    function validateForm() {
+        let form = document.forms["form1"];
+        let name = form["fname"].value.trim();
+        let lname = form["lname"].value.trim();
+        let street = form["strt"].value.trim();
+        let city = form["city"].value.trim();
+        let bday = form["birthday"].value;
+        let phone = form["number"].value.trim();
+        let uwagi = form["message"].value;
+        let alfabet = /^[a-ząćęłńóśźż -]+$/i;
+        let telefon = /^[0-9]/;
+        if (!alfabet.test(name)) {
+            alert("Wprowadź poprawne imię.");
+            return false;
+        }
+        if (!alfabet.test(lname)) {
+            alert("Wprowadź poprawne nazwisko.");
+            return false;
+        }
+        if (!alfabet.test(street)) {
+            alert("Wprowadź poprawną ulicę.");
+            return false;
+        }
+        if (!alfabet.test(city)) {
+            alert("Wprowadź poprawne miasto.");
+            return false;
+        }
+        if (!((telefon.test(phone)&&phone.length == 9)||(phone.length == 12 && telefon.test(phone.split("+")[1])))) {
+            alert("Wprowadź poprawny numer telefonu.");
+            return false;
+        }
+        if (new Date(bday) > new Date(2020, 11, 15)) {
+            alert("Wprowadź odpowiednią datę urodzenia.");
+            return false;
+        }
+        if (uwagi.trim().length > 5) {
+            alert("Kto pytał?");
+            return false;
+        }
+        return true;
+    }
+</script>
 <body>
-<form>
+<form name="form1" action="https://www.google.com/" onsubmit="return validateForm()">
 	<label for="fname">Imię</label><br>
 	<input type="text" id="fname" name="fname" required><br>
 	<label for="lname">Nazwisko</label><br>
@@ -25,7 +68,7 @@
 	</select><br>
 	<label for="birthday">Data urodzenia</label><br>
 	<input type="date" id="birthday" name="birthday" required><br>
-	<label for="number">Nr Telefonu</label><br>
+	<label for="number">Nr Telefonu<br><small>Format: +48 000 000 000 lub 000 000 000</small></label><br>
 	<input type="tel" id="number" name="number" required><br>
 	<label for="email">Email</label><br>
 	<input type="email" id="email" name="email" required><br>
@@ -34,11 +77,9 @@
 	<label for="car">Czy posiadasz prawo jazdy?</label><br>
 	<input type="radio" id="yes" name="car" value="yes"> <label for="yes">Tak</label>
 	<input type="radio" id="no" name="car" value="no" checked="checked"> <label for="no">Nie</label><br>
-	<label for="message">Uwagi</label>
-	<textarea name="message" rows="10" cols="30">
-	
-	</textarea><br>
-	<input type="submit" value="Ok" formaction="https://www.google.com/">
+	<label for="message">Uwagi</label><br>
+	<textarea name="message" rows="10" cols="30"></textarea><br>
+	<input type="submit" value="Ok">
 </form>
 </body>
 </html>
